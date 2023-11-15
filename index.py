@@ -11,7 +11,7 @@ def index():
     homepage += "<a href=/today>顯示日期時間</a><br>"
     homepage += "<a href=/welcome?nick=謝仁翔>傳送使用者暱稱</a><br>"
     homepage += "<a href=/about>仁翔簡介網頁</a><br>"
-    homepage += "<a href=/about>圖書精選</a><br>"
+    homepage += "<a href=/addbooks>圖書精選</a><br>"
     return homepage
 
 
@@ -42,6 +42,19 @@ def account():
         return result
     else:
         return render_template("account.html")
+        @app.route("/addbooks")
+def addbooks():
+    result = ""
+
+    collection_ref = db.collection("圖書精選")
+    docs = collection_ref.order_by("anniversary",direction=firestore.Query.DESCENDING).get()
+    for doc in docs:
+        bk = doc.to_dict()
+        result += "書名：<a href+" + bk["url"] + ">" + bk["tittle"]+"</a><br>"
+        result += "書名::" + bk["author"]+"<br>"
+        result += str(bk["anniversary"])"周年紀念版<br>"
+        result += "<img src =" + bk["cover"] + "></imp><br><br>"
+    return result
 
 
 
