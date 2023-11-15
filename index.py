@@ -42,20 +42,7 @@ def account():
         return result
     else:
         return render_template("account.html")
-        @app.route("/addbooks")
-def addbooks():
-    result = ""
-
-    collection_ref = db.collection("圖書精選")
-    docs = collection_ref.order_by("anniversary",direction=firestore.Query.DESCENDING).get()
-    for doc in docs:
-        bk = doc.to_dict()
-        result += "書名：<a href+" + bk["url"] + ">" + bk["tittle"]+"</a><br>"
-        result += "書名::" + bk["author"]+"<br>"
-        result += str(bk["anniversary"])"周年紀念版<br>"
-        result += "<img src =" + bk["cover"] + "></imp><br><br>"
-    return result
-
+   
 
 
 #if __name__ == "__main__":
