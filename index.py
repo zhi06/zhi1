@@ -1,12 +1,3 @@
-import firebase_admin
-from firebase_admin import credentials, firestore
-cred = credentials.Certificate("serviceAccountKey.json")
-firebase_admin.initialize_app(cred)
-
-db = firestore.client()
-
-
-
 
 from flask import Flask, render_template,request
 from datetime import datetime
@@ -20,7 +11,6 @@ def index():
     homepage += "<a href=/today>顯示日期時間</a><br>"
     homepage += "<a href=/welcome?nick=謝仁翔>傳送使用者暱稱</a><br>"
     homepage += "<a href=/about>仁翔簡介網頁</a><br>"
-    homepage += "<a href=/about>帳號密碼</a><br>"
     homepage += "<a href=/about>圖書精選</a><br>"
     return homepage
 
