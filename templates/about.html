@@ -8,55 +8,61 @@
 		* { font-family:"標楷體"; margin-left:auto; margin-right:auto;}
 		h1 {color:blue; font-size:60px;}
 		h2 {color:#33ff33; font-size:40px;}
+		{padding: 0;margin: 0;}
+      header,section,footer{background-color: #d6ccc2;border:5px #9d8189 solid;padding: 30px 20px 50px;margin: 30px;}
 	</style>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
 <script>
 		function change1() {
-  			document.getElementById("pic").src = "mountain.jpg";
+  			document.getElementById("pic").src = "mad.png";
   			document.getElementById("h2text").innerText = "靜宜資管";
 		}
 
 		function change2() {
-  			document.getElementById("pic").src = "cliff.jpg";
+  			document.getElementById("pic").src = "yuuki.jpg";
   			document.getElementById("h2text").innerText = "Xiang";
 		}
 	</script>
 
 </head>
 <body>
-	<table width="70%">
-		<tr>
-			<td>
-				<img src="cliff.jpg" width="110%" id="pic" onmouseover="change1()" onmouseout="change2()"></img>
-			</td>>
-
-			<td>
+	<header>
+				<img src="yuuki.jpg" width="110%" id="pic" onmouseover="change1()" onmouseout="change2()"></img>
+			
 				<h1>謝仁翔</h1>
 				<h2 id="h2text">Xiang</h2>
-			</td>
-		</tr>
-	</table>
-	<table width="70%" border="1">
-		<tr>
-			<td>
-				個人網頁：<a href="https://www1.pu.edu.tw/~tcyang">https://www1.pu.edu.tw/~tcyang</a><br>
-				FB：<a href="https://www.facebook.com/tcyang1971" target="_blank">https://www.facebook.com/tcyang1971</a><br>
-				Tel: <a href="tel:0426328001,18110">04-26328001#18110</a><br>
-				E-Mail: <a href="mailto:tcyang@pu.edu.tw">tcyang@pu.edu.tw</a><br>
-			</td>
+	<header>
+		</main>
 
-			<td>
-				大象席地而坐電影配樂<br>
+	<article>
+		<h3>關於我</h3>
+				個人網頁：<a href="https://www.youtube.com/channel/UCwlsUbOepe1m7ofKRCTaA-w">https://www.youtube.com/channel/UCwlsUbOepe1m7ofKRCTaA-w</a><br>
+				FB：<a href="https://www.facebook.com/profile.php?id=100017198418045" target="_blank">https://www.facebook.com/profile.php?id=100017198418045</a><br>
+				E-Mail: <a href="samhjh666@gmail.com">samhjh666@gmail.com</a><br>
+    <article>
+   
+			<h3>歌</h3>
+				月光的指引<br>
 				<audio controls>
-					<source src="elephant.mp3" type="audio/mP3">
+					<source src="moonlight.mp3" type="audio/mP3">
 				</audio><br>
-			</td>
+    
+			<h3>推薦影片</h3>
+				複雜人生<br>
+				<iframe src="https://www.youtube.com/embed/g8ENtHe2hMU?si=nYxF5hz8gNsjWGfN"allowfullscreen></iframe>
+			<section> 
+                          <h3>何倫碼測驗結果<h3>
+                          <img src="zhi.png">
+            </section>
+</main>
 
-			<td>
-				不要去臺灣<br>
-				<iframe src="https://www.youtube.com/embed/pW88QFpHXa8" allowfullscreen></iframe>
-			</td>
-		</tr>
-	</table>
+		<footer>
+		Copyright ©  謝仁翔. All Rights Reserved.
+	</footer>
 
+		
 </body>
 </html>
