@@ -11,6 +11,7 @@ def index():
     homepage += "<a href=/welcome?nick=謝仁翔>傳送使用者暱稱</a><br>"
     homepage += "<a href=/about>仁翔簡介網頁</a><br>"
     homepage += "<a href=/addbooks>圖書精選</a><br>"
+    homepage += "<br><a href=/spider>網路爬蟲抓取子青老師課程</a><br>"
     return homepage
 
 
@@ -41,6 +42,10 @@ def account():
         return result
     else:
         return render_template("account.html")
+@app.route("/spider")
+def about():
+    return render_template("spider.py")
+
    
 
 
