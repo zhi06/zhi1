@@ -1,20 +1,35 @@
-from flask import Flask, render_template,request
-from datetime import datetime
+import firebase_admin
+from firebase_admin import credentials, firestore
+cred = credentials.Certificate("serviceAccountKey.json")
+firebase_admin.initialize_app(cred)
 
-app = Flask(__name__)
+from flask import Flask, render_template, request
+from datetime import datetime
+import requests
+from bs4 import BeautifulSoup
+
+app = Flask(name)
+
 @app.route("/")
 def index():
-    homepage = "<h1>謝仁翔Python網頁</h1>"
+    homepage = "<h1>謝仁翔Python網頁1121</h1>"
     homepage += "<a href=/mis>MIS</a><br>"
     homepage += "<a href=/today>顯示日期時間</a><br>"
-    homepage += "<a href=/welcome?nick=謝仁翔>傳送使用者暱稱</a><br>"
+    homepage += "<a href=/welcome?nick=>傳送使用者暱稱</a><br>"
     homepage += "<a href=/about>仁翔簡介網頁</a><br>"
-    homepage += "<a href=/addbooks>圖書精選</a><br>"
-    homepage += "<br><a href=/spider>網路爬蟲抓取子青老師課程</a><br>"
+    homepage += "<a href=/account>網頁表單輸入帳密傳值</a><br>"
+    homepage += "<a href=/read>讀取FIREBASE資料</a><br>"
+
+    homepage += "<a href=/books>精選圖書列表</a><br>"
+    homepage += "<a href=/read>書名查詢</a><br>"
+    homepage += "<a href=/spider>網路爬蟲抓取子青老師課程</a><br>"
     return homepage
+
+
 @app.route("/mis")
 def course():
     return "<h1>資訊管理導論</h1>"
+
 @app.route("/today")
 def today():
     now = datetime.now()
@@ -22,10 +37,12 @@ def today():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
 @app.route("/welcome", methods=["GET", "POST"])
 def welcome():
     user = request.values.get("nick")
     return render_template("welcome.html", name=user)
+
 @app.route("/account", methods=["GET", "POST"])
 def account():
     if request.method == "POST":
@@ -35,6 +52,21 @@ def account():
         return result
     else:
         return render_template("account.html")
+
+@app.route("/books")
+def books():
+    result = ""
+    db = firestore.client()
+    collection_ref = db.collection("圖書精選")
+    docs = collection_ref.order_by("anniversary",direction=firestore.Query.DESCENDING).get()
+    for doc in docs:
+        bk = doc.to_dict()
+        result += "書名：<a href+" + bk["url"] + ">" + bk["title"]+"</a><br>"
+        result += "書名::" + bk["author"]+"<br>"
+        result += str(bk["anniversary"])+"周年紀念版<br>"
+        result += "<img src =" + bk["cover"] + "></imp><br><br>"
+    return result
+
 @app.route("/spider")
 def spider():
     url = "https://www1.pu.edu.tw/~tcyang/course.html"
@@ -47,8 +79,10 @@ def spider():
         info += "<a href=" + x.find("a").get("href") + ">" + x.text +"</a><br>"
         info += x.find("a").get("href") + "<br><br>"
     return info
-    return render_template("spider.py")
 
 
-#if __name__ == "__main__":
- #   app.run(debug=True)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+#if name == "main":
