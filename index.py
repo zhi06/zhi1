@@ -8,7 +8,7 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
-app = Flask(name)
+app = Flask(__name__)
 
 @app.route("/")
 def index():
