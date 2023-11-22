@@ -43,7 +43,7 @@ def account():
     else:
         return render_template("account.html")
 @app.route("/spider")
-def about():
+def spider():
     return render_template("spider.py")
 
    
