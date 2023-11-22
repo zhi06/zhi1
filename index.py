@@ -1,9 +1,6 @@
-
-import requests
-from bs4 import BeautifulSoup
-
+from flask import Flask, render_template,request
+from datetime import datetime
 app = Flask(__name__)
-
 @app.route("/")
 def index():
     homepage = "<h1>謝仁翔Python網頁</h1>"
@@ -14,26 +11,20 @@ def index():
     homepage += "<a href=/addbooks>圖書精選</a><br>"
     homepage += "<br><a href=/spider>網路爬蟲抓取子青老師課程</a><br>"
     return homepage
-
-
 @app.route("/mis")
 def course():
     return "<h1>資訊管理導論</h1>"
-
 @app.route("/today")
 def today():
     now = datetime.now()
     return render_template("today.html",datetime = str(now))
-
 @app.route("/about")
 def about():
     return render_template("about.html")
-
 @app.route("/welcome", methods=["GET", "POST"])
 def welcome():
     user = request.values.get("nick")
     return render_template("welcome.html", name=user)
-
 @app.route("/account", methods=["GET", "POST"])
 def account():
     if request.method == "POST":
@@ -45,6 +36,8 @@ def account():
         return render_template("account.html")
 @app.route("/spider")
 def spider():
+    return render_template("spider.py")
+
     url = "https://www1.pu.edu.tw/~tcyang/course.html"
     Data = requests.get(url)
     Data.encoding = "utf-8"
