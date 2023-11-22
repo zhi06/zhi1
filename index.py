@@ -36,8 +36,6 @@ def account():
         return render_template("account.html")
 @app.route("/spider")
 def spider():
-    return render_template("spider.py")
-
     url = "https://www1.pu.edu.tw/~tcyang/course.html"
     Data = requests.get(url)
     Data.encoding = "utf-8"
