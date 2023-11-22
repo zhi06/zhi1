@@ -44,8 +44,16 @@ def account():
         return render_template("account.html")
 @app.route("/spider")
 def spider():
-    return render_template("spider.py")
-
+    url = "https://www1.pu.edu.tw/~tcyang/course.html"
+    Data = requests.get(url)
+    Data.encoding = "utf-8"
+    sp = BeautifulSoup(Data.text,"html.parser")
+    result=sp.select(".team-box")
+    info = ""
+    for x in result:
+        info += "<a href=" + x.find("a").get("href") + ">" + x.text +"</a><br>"
+        info += x.find("a").get("href") + "<br><br>"
+    return info
    
 
 
