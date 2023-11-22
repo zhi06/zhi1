@@ -48,6 +48,5 @@ def spider():
     return info
 
 
-
-#if __name__ == "__main__":
-    #app.run(debug=Ture)
+if name == "main":
+    app.run(debug=True)
