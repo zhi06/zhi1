@@ -1,5 +1,12 @@
-from flask import Flask, render_template,request
+import firebase_admin
+from firebase_admin import credentials, firestore
+cred = credentials.Certificate("serviceAccountKey.json")
+firebase_admin.initialize_app(cred)
+
+from flask import Flask, render_template, request
 from datetime import datetime
+import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -54,7 +61,7 @@ def spider():
         info += "<a href=" + x.find("a").get("href") + ">" + x.text +"</a><br>"
         info += x.find("a").get("href") + "<br><br>"
     return info
-   
+
 
 
 #if __name__ == "__main__":
