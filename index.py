@@ -47,6 +47,7 @@ def spider():
         info += "<a href=" + x.find("a").get("href") + ">" + x.text +"</a><br>"
         info += x.find("a").get("href") + "<br><br>"
     return info
+    return render_template("spider.py")
 
 
 #if __name__ == "__main__":
