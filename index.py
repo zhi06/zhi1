@@ -210,8 +210,8 @@ def movie_rate():
         doc_ref = db.collection("電影含分級").document(movie_id)
         doc_ref.set(doc)
     return "近期上映電影已爬蟲及存檔完畢，網站最近更新日期為：" + lastUpdate
-@app.route("/webhook4", methods=["POST"])
-def webhook4():
+@app.route("/webhook5", methods=["POST"])
+def webhook5():
     # build a request object
     req = request.get_json(force=True)
     # fetch queryResult from json
@@ -219,7 +219,7 @@ def webhook4():
     #msg =  req.get("queryResult").get("queryText")
     #info = "動作：" + action + "； 查詢內容：" + msg
     if (action == "rateChoice"):rate =  req.get("queryResult").get("parameters").get("rate")
-    info = "我是王琮善開發的電影聊天機器人,您選擇的電影分級是：" + rate + "，相關電影：\n"
+    info = "我是謝仁翔開發的電影聊天機器人,您選擇的電影分級是：" + rate + "，相關電影：\n"
     db = firestore.client()
     collection_ref = db.collection("電影含分級")
     docs = collection_ref.get()
