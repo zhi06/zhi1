@@ -3,8 +3,7 @@ from firebase_admin import credentials, firestore
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 
-from flask import Flask, render_template, request,
-     make_response, jsonify
+from flask import Flask, render_template, request, make_response, jsonify
 from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
