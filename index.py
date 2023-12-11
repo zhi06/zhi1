@@ -210,8 +210,8 @@ def movie_rate():
         doc_ref = db.collection("電影含分級").document(movie_id)
         doc_ref.set(doc)
     return "近期上映電影已爬蟲及存檔完畢，網站最近更新日期為：" + lastUpdate
-@app.route("/webhook3", methods=["POST"])
-def webhook3():
+@app.route("/webhook4", methods=["POST"])
+def webhook4():
     # build a request object
     req = request.get_json(force=True)
     # fetch queryResult from json
